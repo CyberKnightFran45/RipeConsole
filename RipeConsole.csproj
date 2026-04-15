@@ -1,0 +1,123 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+	<ApplicationIcon>Assets\logo.ico</ApplicationIcon>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+	<GenerateAssemblyTitleAttribute>true</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>true</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyCompanyAttribute>true</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>true</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>true</GenerateAssemblyCopyrightAttribute>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+  <PackageId>ripe.console</PackageId>
+  <AssemblyTitle>RIPE Console</AssemblyTitle>
+  <Description>Modding tool that handles several files from PopCap Games.</Description>
+  <Company>FranZ</Company>
+  <Authors>FranZ</Authors>
+  <Product>RIPE</Product>
+  <Copyright>GPL-3.0 license</Copyright>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+  <_Build>$([System.DateTime]::UtcNow.Subtract($([System.DateTime]::new(2000,1,1) ) ).Days)</_Build>
+
+  <_Secs>$([System.Convert]::ToInt32($([System.DateTime]::UtcNow.TimeOfDay.TotalSeconds) ) )</_Secs>
+  <_Rev>$([MSBuild]::Modulo($(_Secs), 65535) )</_Rev>
+
+  <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  <FileVersion>1.0.$(_Build).$(_Rev)</FileVersion>
+  <Version>1.0.$(_Build).$(_Rev)-release</Version>
+  </PropertyGroup>
+  
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Compiled\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+	<Deterministic>false</Deterministic>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <Optimize>true</Optimize>
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+    <OutputPath>Compiled\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <TieredCompilation>false</TieredCompilation>
+    <Deterministic>false</Deterministic>
+  </PropertyGroup>
+  
+  <ItemGroup>
+  <None Include="Assets\Sample\_CLI.bat">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	<TargetPath>_CLI.bat</TargetPath>
+  </None>
+
+  <None Include="Assets\Sample\_test.txt">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	<TargetPath>_test.txt</TargetPath>
+  </None>
+  
+</ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	<PackageReference Include="SkiaSharp" Version="3.119.1"/>
+  </ItemGroup>
+ 
+  <ItemGroup>
+  
+      <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>Dependencies\ICSharpCode.SharpZipLib.dll</HintPath>
+      </Reference>
+ 
+      <Reference Include="BlossomLib">
+      <HintPath>Dependencies\BlossomLib.dll</HintPath>
+      </Reference>
+	  
+	  <Reference Include="RipeLib">
+      <HintPath>Dependencies\RipeLib.dll</HintPath>
+      </Reference>
+	  
+	  <Reference Include="TextHandler">
+      <HintPath>Dependencies\TextHandler.dll</HintPath>
+      </Reference>
+	  
+	  <Reference Include="SexyParsers">
+      <HintPath>Dependencies\SexyParsers.dll</HintPath>
+      </Reference>
+	  
+	  <Reference Include="SexyCompressors">
+      <HintPath>Dependencies\SexyCompressors.dll</HintPath>
+      </Reference>
+	  	  
+	  <Reference Include="SexyCryptor">
+      <HintPath>Dependencies\SexyCryptor.dll</HintPath>
+      </Reference>
+	   
+	  <Reference Include="PopCapResManager">
+      <HintPath>Dependencies\PopCapResManager.dll</HintPath>
+      </Reference>
+	  
+	  <Reference Include="TextureTranscoder">
+      <HintPath>Dependencies\TextureTranscoder.dll</HintPath>
+      </Reference>
+	  
+	  <Reference Include="SexyObjUtils">
+      <HintPath>Dependencies\SexyObjUtils.dll</HintPath>
+      </Reference>
+	 
+  </ItemGroup>
+  
+</Project>

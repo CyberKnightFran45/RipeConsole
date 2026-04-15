@@ -1,0 +1,5 @@
+Hi, ya!
+
+This file is for testing purposes. 
+
+Try to use it with the CLI script and pass it as an argument to the program.

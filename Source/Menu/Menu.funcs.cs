@@ -23,89 +23,75 @@ AllowDirs = true
 
 options.Add(0, exit);
 
-// ========  SexyParser ========
+// ========  TextHandler ========
 
-ToolAction userdataEncode = new()
+ToolAction lawnStrSort = new()
 {
-Name = "PvZ Userdata - Encode",
-Execute = ActionInvoker.PvZSave_Encode,
-FileFilter = FilterCriterias.PvZRawUserFilter,
-AllowFiles = true,
+Name = "LawnStrings Manager - Sort file",
+Execute = ActionInvoker.LawnStrings_Sort,
+FileFilter = FilterCriterias.LawnStringsFilter,
+AllowFiles = true
 };
 
-options.Add(1, userdataEncode);
+options.Add(1, lawnStrSort);
 
-ToolAction userdataDecode = new()
+ToolAction lawnStrConvert = new()
 {
-Name = "PvZ Userdata - Decode",
-Execute = ActionInvoker.PvZSave_Decode,
-FileFilter = FilterCriterias.PvZUserFilter,
-AllowFiles = true,
+Name = "LawnStrings Manager - Convert file",
+Execute = ActionInvoker.LawnStrings_Convert,
+FileFilter = FilterCriterias.LawnStringsFilter,
+AllowFiles = true
 };
 
-options.Add(2, userdataDecode);
+options.Add(2, lawnStrConvert);
 
-ToolAction cfw2Encode = new()
+ToolAction lawnStrCompare = new()
 {
-Name = "PvZ Font - Encode",
-Execute = ActionInvoker.PvZFont_Encode,
-FileFilter = FilterCriterias.JsonFilter,
-AllowFiles = true,
+Name = "LawnStrings Manager - Compare files",
+Execute = ActionInvoker.LawnStrings_Compare,
+FileFilter = FilterCriterias.LawnStringsFilter,
+AllowFiles = true
 };
 
-options.Add(3, cfw2Encode);
+options.Add(3, lawnStrCompare);
 
-ToolAction cfw2Decode = new()
+ToolAction lawnStrUpdate = new()
 {
-Name = "PvZ Font - Decode",
-Execute = ActionInvoker.PvZFont_Decode,
-FileFilter = FilterCriterias.PvZFontFilter,
-AllowFiles = true,
+Name = "LawnStrings Manager - Update file",
+Execute = ActionInvoker.LawnStrings_Update,
+FileFilter = FilterCriterias.LawnStringsFilter,
+AllowFiles = true
 };
 
-options.Add(4, cfw2Decode);
+options.Add(4, lawnStrUpdate);
 
-ToolAction rtonEncode = new()
+ToolAction lawnStrDownload = new()
 {
-Name = "RTON Parser - Encode",
-Execute = ActionInvoker.RTON_Encode,
-FileFilter = FilterCriterias.JsonFilter,
-AllowFiles = true,
-AllowDirs = true
+Name = "LawnStrings Server - Download res",
+Execute = ActionInvoker.LawnStringsServer_DownloadRes
 };
 
-options.Add(5, rtonEncode);
+options.Add(5, lawnStrDownload);
 
-ToolAction rtonDecode = new()
+ToolAction lawnSvGetUpdate = new()
 {
-Name = "RTON Parser - Decode",
-Execute = ActionInvoker.RTON_Decode,
-FileFilter = FilterCriterias.RtonFilter,
-AllowFiles = true,
-AllowDirs = true
+Name = "LawnStrings Server - Get new text",
+Execute = ActionInvoker.LawnStringsServer_GetUpdate,
+FileFilter = FilterCriterias.LawnStringsFilterCN,
+AllowFiles = true
 };
 
-options.Add(6, rtonDecode);
+options.Add(6, lawnSvGetUpdate);
 
-ToolAction newtonEncode = new()
+ToolAction lawnSvUpdate = new()
 {
-Name = "Newton Parser - Encode",
-Execute = ActionInvoker.Newton_Encode,
-FileFilter = FilterCriterias.NewtonRawFilter,
-AllowFiles = true,
+Name = "LawnStrings Server - Update file",
+Execute = ActionInvoker.LawnStringsServer_Update,
+FileFilter = FilterCriterias.LawnStringsFilterCN,
+AllowFiles = true
 };
 
-options.Add(7, newtonEncode);
-
-ToolAction newtonDecode = new()
-{
-Name = "Newton Parser - Decode",
-Execute = ActionInvoker.Newton_Decode,
-FileFilter = FilterCriterias.NewtonFilter,
-AllowFiles = true,
-};
-
-options.Add(8, newtonDecode);
+options.Add(7, lawnSvUpdate);
 
 ToolAction cTxtEncode = new()
 {
@@ -116,7 +102,7 @@ AllowFiles = true,
 AllowDirs = true
 };
 
-options.Add(9, cTxtEncode);
+options.Add(8, cTxtEncode);
 
 ToolAction cTxtDecode = new()
 {
@@ -127,7 +113,91 @@ AllowFiles = true,
 AllowDirs = true
 };
 
-options.Add(10, cTxtDecode);
+options.Add(9, cTxtDecode);
+
+// ========  SexyParser ========
+
+ToolAction userdataEncode = new()
+{
+Name = "PvZ Userdata - Encode",
+Execute = ActionInvoker.PvZSave_Encode,
+FileFilter = FilterCriterias.PvZRawUserFilter,
+AllowFiles = true,
+};
+
+options.Add(10, userdataEncode);
+
+ToolAction userdataDecode = new()
+{
+Name = "PvZ Userdata - Decode",
+Execute = ActionInvoker.PvZSave_Decode,
+FileFilter = FilterCriterias.PvZUserFilter,
+AllowFiles = true,
+};
+
+options.Add(11, userdataDecode);
+
+ToolAction cfw2Encode = new()
+{
+Name = "PvZ Font - Encode",
+Execute = ActionInvoker.PvZFont_Encode,
+FileFilter = FilterCriterias.JsonFilter,
+AllowFiles = true,
+};
+
+options.Add(12, cfw2Encode);
+
+ToolAction cfw2Decode = new()
+{
+Name = "PvZ Font - Decode",
+Execute = ActionInvoker.PvZFont_Decode,
+FileFilter = FilterCriterias.PvZFontFilter,
+AllowFiles = true,
+};
+
+options.Add(13, cfw2Decode);
+
+ToolAction rtonEncode = new()
+{
+Name = "RTON Parser - Encode",
+Execute = ActionInvoker.RTON_Encode,
+FileFilter = FilterCriterias.JsonFilter,
+AllowFiles = true,
+AllowDirs = true
+};
+
+options.Add(14, rtonEncode);
+
+ToolAction rtonDecode = new()
+{
+Name = "RTON Parser - Decode",
+Execute = ActionInvoker.RTON_Decode,
+FileFilter = FilterCriterias.RtonFilter,
+AllowFiles = true,
+AllowDirs = true
+};
+
+options.Add(15, rtonDecode);
+
+ToolAction newtonEncode = new()
+{
+Name = "Newton Parser - Encode",
+Execute = ActionInvoker.Newton_Encode,
+FileFilter = FilterCriterias.NewtonRawFilter,
+AllowFiles = true,
+};
+
+options.Add(16, newtonEncode);
+
+ToolAction newtonDecode = new()
+{
+Name = "Newton Parser - Decode",
+Execute = ActionInvoker.Newton_Decode,
+FileFilter = FilterCriterias.NewtonFilter,
+AllowFiles = true,
+};
+
+options.Add(17, newtonDecode);
 
 // ======== SexyCryptors ========
 

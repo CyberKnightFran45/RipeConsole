@@ -11,9 +11,9 @@ internal static partial class ActionInvoker
 {
 // Get base64 mode
 
-private static bool GetBase64Mode(string[] args)
+private static bool GetBase64Mode(string[] args, int index = 2)
 {
-return ArgsParser.GetBoolOrDefault(args, 2, "Use Web-safe base64");
+return ArgsParser.GetBoolOrDefault(args, index, "Use Web-safe base64");
 }
 
 // Encode base64

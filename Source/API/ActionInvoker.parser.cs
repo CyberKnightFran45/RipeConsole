@@ -90,24 +90,6 @@ string outPath = ArgsParser.GetOutPath(args, 1, inPath, ".json");
 NewtonParser.Decode(inPath, outPath);
 }
 
-// Encode Compiled txt
-
-public static void CompiledTxt_Encode(string[] args)
-{
-static void execute(string input, string output) => CompiledText.EncodeFile(input, output);
-
-TaskHelper.Process(args, execute, "Encode", "encoded", ".compiled.txt", FilterCriterias.CompiledTxtFilter);
-}
-
-// Decode Compiled txt
-
-public static void CompiledTxt_Decode(string[] args)
-{
-static void execute(string input, string output) => CompiledText.DecodeFile(input, output);
-
-TaskHelper.Process(args, execute, "Decode", "decoded", ".plain.txt", FilterCriterias.CompiledTxtFilter);
-}
-
 }
 
 }

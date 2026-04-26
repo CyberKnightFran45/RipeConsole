@@ -11,9 +11,9 @@ internal static partial class ActionInvoker
 {
 // Get CompressionLevel
 
-private static CompressionLevel GetCompressLvl(string[] args)
+private static CompressionLevel GetCompressLvl(string[] args, int index = 2)
 {
-return ArgsParser.GetEnumOrDefault<CompressionLevel>(args, 2, "Select compression level");
+return ArgsParser.GetEnumOrDefault<CompressionLevel>(args, index, "Select compression level");
 }
 
 // Compress SMF

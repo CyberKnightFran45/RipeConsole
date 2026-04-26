@@ -45,6 +45,16 @@ public static readonly Func<string, bool> GzFilter;
 
 public static readonly Func<string, bool> ZlibFilter;
 
+// LawnStrings filter
+
+public static readonly Func<string, bool> LawnStringsFilter;
+
+public static readonly Func<string, bool> LawnStringsFilterCN;
+
+// CompiledTxt filter
+
+public static readonly Func<string, bool> CompiledTxtFilter;
+
 // PvZ User filter
 
 public static readonly Func<string, bool> PvZUserFilter;
@@ -64,10 +74,6 @@ public static readonly Func<string, bool> RtonFilter;
 public static readonly Func<string, bool> NewtonFilter;
 
 public static readonly Func<string, bool> NewtonRawFilter;
-
-// CompiledTxt filter
-
-public static readonly Func<string, bool> CompiledTxtFilter;
 
 // Cdat filter
 
@@ -139,6 +145,13 @@ private static readonly HashSet<string> DEFAULT_EXT = [ ".*" ];
 
 private static readonly HashSet<string> DEFAULT_NAMES = [ "*" ];
 
+// Text
+
+private static readonly HashSet<string> TXT_EXT = new(StringComparer.OrdinalIgnoreCase)
+{
+".txt"
+};
+
 // Json
 
 private static readonly HashSet<string> JSON_EXT = new(StringComparer.OrdinalIgnoreCase)
@@ -201,6 +214,39 @@ private static readonly HashSet<string> ZLIB_EXT = new(StringComparer.OrdinalIgn
 ".zl"
 };
 
+// PopCap text
+
+private static readonly HashSet<string> POPCAP_TXT_EXT = new(StringComparer.OrdinalIgnoreCase)
+{
+".txt",
+".json",
+".rton"
+};
+
+// LawnStrings names
+
+private static readonly HashSet<string> LAWNSTRINGS_NAMES = new(StringComparer.OrdinalIgnoreCase)
+{
+"LawnStrings",
+"LawnStrings-de-de",
+"LawnStrings-en-us",
+"LawnStrings-es-es",
+"LawnStrings-fr-fr",
+"LawnStrings-it-it",
+"LawnStrings-pt-br",
+"android_file",
+"ios_file"
+};
+
+// LawnStrings names (Chinese version)
+
+private static readonly HashSet<string> LAWNSTRINGS_NAMES_CN = new(StringComparer.OrdinalIgnoreCase)
+{
+"LawnStrings",
+"android_file",
+"ios_file"
+};
+
 // PvZ userdata
 
 private static readonly HashSet<string> PVZ_USERDATA_EXT = [ ".dat" ];
@@ -228,15 +274,6 @@ private static readonly HashSet<string> RTON_EXT = new(StringComparer.OrdinalIgn
 private static readonly HashSet<string> NEWTON_EXT = new(StringComparer.OrdinalIgnoreCase)
 {
 ".newton"
-};
-
-// Compiled txt
-
-private static readonly HashSet<string> COMPILED_TXT_EXT = new(StringComparer.OrdinalIgnoreCase)
-{
-".txt",
-".json",
-".rton"
 };
 
 // Cdat
@@ -381,6 +418,11 @@ DflFilter = PathHelper.CreateFileFilter(DEFAULT_NAMES, DEFLATE_EXT);
 GzFilter = PathHelper.CreateFileFilter(DEFAULT_NAMES, GZIP_EXT);
 ZlibFilter = PathHelper.CreateFileFilter(DEFAULT_NAMES, ZLIB_EXT);
 
+LawnStringsFilter = PathHelper.CreateFileFilter(LAWNSTRINGS_NAMES, POPCAP_TXT_EXT);
+LawnStringsFilterCN = PathHelper.CreateFileFilter(LAWNSTRINGS_NAMES_CN, TXT_EXT);
+
+CompiledTxtFilter = PathHelper.CreateFileFilter(DEFAULT_NAMES, POPCAP_TXT_EXT);
+
 PvZUserFilter = PathHelper.CreateFileFilter(PVZ_USERDATA_NAMES, PVZ_USERDATA_EXT);
 PvZRawUserFilter = PathHelper.CreateFileFilter(PVZ_USERDATA_NAMES, JSON_EXT);
 
@@ -390,7 +432,6 @@ NewtonFilter = PathHelper.CreateFileFilter(POPCAP_RES_NAMES, NEWTON_EXT);
 NewtonRawFilter = PathHelper.CreateFileFilter(POPCAP_RES_NAMES, JSON_EXT);
 
 RtonFilter = PathHelper.CreateFileFilter(DEFAULT_NAMES, RTON_EXT);
-CompiledTxtFilter = PathHelper.CreateFileFilter(DEFAULT_NAMES, COMPILED_TXT_EXT);
 
 CdatFilter = PathHelper.CreateFileFilter(DEFAULT_NAMES, CDAT_EXT);
 
